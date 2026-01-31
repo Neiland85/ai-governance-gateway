@@ -1,0 +1,28 @@
+name: Docs & Schemas CI
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON
+        run: |
+          find . -name "*.json" -print0 | xargs -0 -n1 jq empty
+
+      - name: Validate YAML
+        run: |
+          pip install yamllint
+          yamllint .
+
+      - name: Check Markdown files exist
+        run: |
+          test -f README.md
+          test -d docs
+
