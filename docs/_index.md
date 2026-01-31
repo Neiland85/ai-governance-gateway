@@ -10,6 +10,7 @@
 ## Architecture
 - [Guardian — Conceptual Design](architecture/guardian-design.md)
 - [Orchestrator — Conceptual Design](architecture/orchestrator-design.md)
+- [Tool Gateway — Conceptual Design](architecture/tool-gateway-design.md)
 
 ## Development
 - Workspace conventions (pending)
