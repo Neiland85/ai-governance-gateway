@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: pip
+          cache-dependency-path: .github/requirements-ci.txt
 
       - name: Install jq
         run: |
@@ -30,7 +30,7 @@ jobs:
       - name: Validate YAML
         run: |
           python -m pip install --upgrade pip
-          python -m pip install yamllint==1.35.1
+          python -m pip install -r .github/requirements-ci.txt
           yamllint .
 
       - name: Check Markdown files exist
