@@ -1,0 +1,21 @@
+extends: default
+
+rules:
+  line-length:
+    max: 120
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: true
+
+  truthy: disable
+
+  comments:
+    min-spaces-from-content: 1
+
+  indentation:
+    spaces: 2
+    indent-sequences: false
+
+ignore: |
+  .git/
+  node_modules/
+  .venv/
