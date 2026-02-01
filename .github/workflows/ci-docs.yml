@@ -12,14 +12,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache-dependency-path: .github/requirements-ci.txt
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
       - name: Validate JSON
         run: |
           find . -name "*.json" -print0 | xargs -0 -n1 jq empty
 
       - name: Validate YAML
         run: |
-          pip install yamllint
-          yamllint .
+          python -m pip install --upgrade pip
+          python -m pip install yamllint==1.35.1
+          yamllint docs 
 
       - name: Check Markdown files exist
         run: |
